@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.full_name.label }}
+        {{ form.full_name }}
+        {{ form.password.label }}
+        {{ form.password }}
+        {{ form.email.label }}
+        {{ form.email }}
+        {{ form.phone_number.label }}
+        {{ form.phone_number }}
+        {{ form.telegram.label }}
+        {{ form.telegram }}
+        {{ form.linkedin.label }}
+        {{ form.linkedin }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
