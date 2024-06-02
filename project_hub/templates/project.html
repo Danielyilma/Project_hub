@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Project{% endblock title %}
+{% block csslink %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/project.css') }}">
+{% endblock csslink %}
+{% block content %}
+<div class="pro-container">
+    <div class="project-left">
+        <h3>{{ project.name }}</h3>
+        <div class="overview">
+            <div>
+                <p>{{ project.description }}</p>
+            </div>
+            <div>
+                <small>published on {{ project.created_at }}</small>
+            </div>
+        </div>
+        <div class="owner">
+            <h4>Owner</h4>
+            <a href="/profile/{{ project.owner.id }}">
+                <img src="{{ url_for('static', filename='images/' + project.owner.profile_pic ) }}" alt="picture" />
+                <span>{{ project.owner.full_name }}</span>
+            </a>
+        </div>
+        <div class="members">
+            <h4>Members</h4>
+            <ul>
+                {% for member in project.members %}
+                    {#{% if member.id = current_user.id %}#}
+                        <li>
+                            <a href="/profile/{{ member.id }}">
+                                <img src="{{ url_for('static', filename='images/' + member.profile_pic ) }}" alt="picture" />
+                                <span>{{ member.full_name }}</span>
+                            </a>
+                        </li>
+                    {#{% endif %}#}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="project-link">
+            <h5>project link</h5>
+            <a href="#">project hub</a>
+        </div>
+    </div>
+    <div class="project-right">
+        <h4>Visuals</h4>
+        <div class="visuals">
+            {% for visual in visuals %}
+                <div>
+                    <img src="{{ url_for('static', filename='images/' + visual.screenshot ) }}" alt="pictures">
+                </div>
+            {% endfor %}           
+        </div>
+        <div class="right-link">
+            <form  class="mt-5" method="get" action="/project/edit/{{ project.id }}">
+                <input class="px-4" type="submit" value="Edit">
+            </form>
+            <form  class="mt-5" method="post" action="/request">
+                <input type="hidden" name='project_id' value="{{ project.id }}">
+                <input class="px-4" type="submit" value="Join"> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- dummy template -->
+<!-- <div class="pro-container">
+    <div class="project-left">
+        <h3>Project Hub</h3>
+        <div class="overview">
+            <div>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, reiciendis sit nam esse quos inventore ipsam vel voluptates dolorum illum dolorem quibusdam omnis numquam aliquid qui sapiente, incidunt nemo odio?</p>
+            </div>
+            <div>
+                <small>published on Dec 25, 2023</small>
+            </div>
+        </div>
+        <div class="owner">
+            <h4>Owner</h4>
+            <a href="#">
+                <img src="free-user-icon-295-thumb.png" alt="picture" />
+                <span>John Doe</span>
+            </a>
+        </div>
+        <div class="members">
+            <h4>Members</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="free-user-icon-295-thumb.png" alt="picture" />
+                        <span>John Doe</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="free-user-icon-295-thumb.png" alt="picture" />
+                        <span>John Doe</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="project-link">
+            <h5>project link</h5>
+            <a href="#">project hub</a>
+        </div>
+    </div>
+    <div class="project-right">
+        <h4>Visuals</h4>
+        <div class="visuals">
+            <div>
+                <img src="david-werbrouck-5GwLlb-_UYk-unsplash.jpg" alt="pictures">
+            </div>
+            <div>
+                <img src="david-werbrouck-5GwLlb-_UYk-unsplash.jpg" alt="pictures">
+            </div>
+            <div>
+                <img src="david-werbrouck-5GwLlb-_UYk-unsplash.jpg" alt="pictures">
+            </div>
+        </div>
+        <div class="progress"></div>
+    </div>
+</div> -->
+{% endblock content %}

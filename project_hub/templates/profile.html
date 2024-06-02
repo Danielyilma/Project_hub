@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock title %}
+{% block csslink %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock csslink %}
+{% block content %}
+<div class="main-content">
+    <div class="profile-pic">
+        <div class="profile-content">
+            <img src="{{ url_for('static', filename='images/' + current_user.profile_pic ) }}" alt="pics">
+            <h3>{{ current_user.full_name }}</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga vero consectetur ad animi illum similique qui quibusdam hic voluptas fugiat quod, assumenda autem optio laboriosam veritatis dolorem quasi dolore earum.</p>
+        </div>
+        <a class="editor" href="/edit">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <span>Edit</span>
+        </a>
+    </div>
+    <div class="portfolio">
+        <h4>Portfolio</h4>
+        <div class="portfolio-flex">
+            {% for project in current_user.projects %}
+                <a href="/project/{{ project.id }}" class="portfolio-project">
+                    <img src="{{ url_for('static', filename='images/' + project.banner ) }}" alt="project">
+                    <h6>{{ project.name }}</h6>
+                </a>
+            {% endfor %}
+            <!-- <a class="portfolio-project">
+                <img src="david-werbrouck-5GwLlb-_UYk-unsplash.jpg" alt="project">
+                <h6>project1</h6>
+            </a>
+            <a class="portfolio-project">
+                <img src="david-werbrouck-5GwLlb-_UYk-unsplash.jpg" alt="project">
+                <h6>project1</h6>
+            </a> -->
+        </div>
+    </div>
+    <div class="skill-contact">
+        <div class="contact">
+            <h4>Contact Information</h4>
+            <div class="con-info">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Ethiopia</p>
+            </div>
+            <div class="con-info">
+                <i class="fa-solid fa-phone"></i>
+                <p>{{ current_user.phone_number }}</p>
+            </div>
+        </div>
+        <div class="skills">
+            <h4>Skills</h4>
+            <div class="skills-title">
+                {% for skill in skills %}
+                    <div class="title">
+                        {{ skill.name }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="links">
+                <h4>Links</h4>
+                <div class="link-content">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span>Telegram</span>
+                    <a href="{{ current_user.telegram }}">{{ current_user.telegram }}</a>
+                </div>
+                <div class="link-content">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>Linkedin</span>
+                    <a href="{{ current_user.linkedin }}">{{ current_user.linkedin }}</a>
+                </div>
+                <div class="link-content">
+                    <i class="fa-brands fa-github"></i>
+                    <span>Github</span>
+                    <a href="{{ current_user.github }}">{{ current_user.github }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

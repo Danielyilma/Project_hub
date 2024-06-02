@@ -1,0 +1,115 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-content {
+    background-color: white;
+    width: 100%;
+    margin: 35px 50px;
+}
+
+.profile-pic {
+    display: flex;
+    padding: 30px;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.profile-pic img {
+    margin: 30px 0;
+    width: 130px;
+    height: 130px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.profile-pic .profile-content {
+    width: 70%;
+}
+
+.profile-pic .profile-content p {
+    padding-top: 10px;
+    line-height: 1.6;
+    width: 80%;
+}
+
+.profile-pic .editor {
+    color: white;
+    text-decoration: none;
+    padding: 6px 20px;
+    border-radius: 15px;
+    background-color: rgba(7,93,114,1);
+}
+
+
+.portfolio {
+    width: 100%;
+    height: 30%;
+    margin: 40px 0;
+    border-bottom: 1px solid grey;
+}
+
+.portfolio-flex {
+    margin: 20px 0;
+    display: flex;
+    gap: 50px;
+}
+
+.portfolio .portfolio-project{
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.portfolio-project img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 300px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.skill-contact {
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid grey;
+}
+
+.skills-title {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.title {
+    padding: 10px;
+    border-radius: 35px;
+    background-color: rgb(170, 210, 220)
+}
+
+.contact {
+    /* margin: 35px 50px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-right: 20px;
+}
+
+.contact .con-info {
+    display: flex;
+    padding: 15px 0;
+}
+
+.contact .con-info p {
+    margin-left: 10px;
+}
+
+.links .link-content > *{
+    padding: 20px 5px 20px 5px;
+}

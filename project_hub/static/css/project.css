@@ -1,0 +1,107 @@
+
+.pro-container {
+    margin: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.project-left {
+    position: relative;
+    padding: 17px;
+    background-color: white;
+}
+
+.overview {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.overview p {
+    margin: 20px 0 10px 0;
+}
+
+.overview li {
+    list-style: none;
+    padding: 10px 0;
+
+}
+
+.owner h4 {
+    margin: 20px 0;
+}
+
+.owner a img {
+    width: 50px;
+    height: 25px;
+    padding: 0 20px 0 0;
+}
+
+.members {
+    margin: 30px 0;
+}
+
+.members h4 {
+    margin-bottom: 15px;
+}
+
+.members li {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.members li img {
+    width: 50px;
+    height: 25px;
+    padding: 0 20px 0 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    padding: 17px;
+    border-radius: 25px;
+}
+
+a:hover {
+    background-color: #46525658;
+}
+
+.project-link {
+    margin-bottom: 20px;
+}
+
+.project-link h5 {
+    margin-bottom: 30px;
+}
+
+.project-right {
+    padding: 35px;
+    background-color: white;
+}
+
+.visuals {
+    padding: 20px;
+    display: flex;
+    gap: 1px;
+    border-bottom: 1px solid grey;
+}
+
+.visuals img{
+    margin: 10px;
+    width: 310px;
+    height: 300px;
+}
+
+.right-link {
+    display: flex;
+    position: absolute;
+    bottom: 40px;
+    right: 150px;
+}
+
+.right-link form {
+    margin: 0 50px;
+}

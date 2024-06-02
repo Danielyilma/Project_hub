@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <section>
+        <div class="login-content">
+            <h1>Welcome To Project Hub</h1>
+            <small>Get inspired and explore exciting projects today!</small>
+            <form method="post" class="login-form">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.full_name.label }}
+                    {{ form.full_name }}
+                    {% for error in form.full_name.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.username.label }}
+                    {{ form.username }}
+                    {% for error in form.username.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.password.label }}
+                    {{ form.password }}
+                    {% for error in form.password.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.email.label }}
+                    {{ form.email }}
+                    {% for error in form.email.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.phone_number.label }}
+                    {{ form.phone_number }}
+                    {% for error in form.phone_number.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.linkedin.label }}
+                    {{ form.linkedin }}
+                    {% for error in form.linkedin.errors %}
+                        <small class="message">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {{ form.submit(class='submit-btn', value='Sign Up') }}
+                <input type="submit" value="Continue with Google">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

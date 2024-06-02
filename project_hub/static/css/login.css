@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+section {
+    background: linear-gradient(90deg, rgba(7,93,114,1) 52%, rgba(0,0,0,1) 59%, rgba(7,93,114,1) 73%);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.login-form {
+    margin: 35px 0 20px 0;
+    width: 65%;
+}
+
+.login-form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login-form div input {
+    border-radius: 5px;
+    height: 23px;
+    margin: 10px 0;
+    padding: 0 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.message {
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 4px 0;
+    font-weight: bold;
+    margin: 5px 0 5px 0;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    color: white !important;
+    border: 1px solid white;
+    margin: 20px 0 5px 0;
+    background-color: rgba(7,93,114,1);
+}

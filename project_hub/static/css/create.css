@@ -1,0 +1,53 @@
+.create-container {
+    margin: 30px;
+    width: 100%;
+    background-color: white;
+}
+
+.create-container .title {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-container .title label {
+    margin: 10px 0 15px 15px;
+}
+
+textarea {
+    margin: 0 15px;
+    border-radius: 5px;
+    max-height: 50px;
+    min-height: 40px;
+    padding: 5px 10px;
+}
+
+input {
+    margin: 0 15px 0 15px;
+    padding: 5px 15px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.pro-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.public {
+    margin: 10px 25px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="submit"] {
+    background-color: rgba(7,93,114,1);
+    width: 100px;
+    color: white;
+}
+
+.submit {
+    position: absolute;
+    right: 0;
+    margin: 30px 39px 0 0;
+}

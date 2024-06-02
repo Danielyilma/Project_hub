@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Create Projects{% endblock title %}
+{% block csslink %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+{% endblock csslink %}
+{% block content %}
+<div class="create-container">
+    <h2>Add a new project</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="title">
+            {{ form.name.label }}
+            {{ form.name(placeholder='Enter a brief but descriptive title') }}
+        </div>
+        <div class="pro-detail">
+            <div class="left-detail">
+                <div class="title">
+                    {{ form.description.label }}
+                    {{ form.description(placeholder="Briefly describes the project's goals, your solution and the impact") }}
+                </div>
+                <div class="title">
+                    {{ form.project_link.label }}
+                    {{ form.project_link }}
+                </div>
+            </div>
+            <div class="right-detail">
+                <div class="title">
+                    {{ form.banner.label }}
+                    {{ form.banner }}
+                </div>
+                <div class="title">
+                    {{ form.project_visual.label }}
+                    {{ form.project_visual }}
+                </div>
+            </div>
+        </div>
+        <!-- <div class="public">
+           {{ form.is_public.label }}
+           {{ form.is_public }}
+        </div> -->
+
+        {% if project %}
+            <div class="submit">
+            {{ form.submit(value="Edit") }}
+            </div>
+        {% else %}
+            <div class="submit">
+            {{ form.submit }}
+            </div>
+        {% endif %}
+        
+    </form>
+</div>
+
+<!-- dummy template -->
+<!-- <div class="create-container">
+    <h2>Add a new project</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="title">
+            <label for="name">Project title</label>
+            <input type="text" placeholder="Enter a brief but descriptive title">
+        </div>
+        <div class="pro-detail">
+            <div class="left-detail">
+                <div class="title">
+                    <label for="name">Project description</label>
+                    <textarea name="" id="" placeholder="Briefly describes the project's goals, your solution and the impact"></textarea>
+                </div>
+                <div class="title">
+                    <label for="name">Project link</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="right-detail">
+                <div class="title">
+                    <label for="name">Add content</label>
+                    <input type="file">
+                </div>
+            </div>
+        </div>
+        <div class="public">
+            <label for="public">Public</label>
+            <input type="checkbox">
+        </div>
+        <div class="submit">
+            <input type="submit" value="create">
+        </div>
+    </form>
+</div> -->
+{% endblock content %}

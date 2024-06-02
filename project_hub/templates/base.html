@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user-dashboard.css') }}">
+    {% block csslink %} {% endblock csslink %}
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo"></div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="{{ url_for('get_projects') }}">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('get_profile') }}">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('get_projects') }}">
+                        <i class="fa-solid fa-bars-progress"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('create_project') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Create</span>
+                    </a>
+                </li>
+                <li class="setting">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="logout">
+                    <a href="{{ url_for('logout') }}">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="right-header">
+            <div>
+                <button id="bell-btn" class="fa-regular fa-bell"></button>
+                <img src="{{ url_for('static', filename='images/' + current_user.profile_pic) }}" alt="pictures">
+                <p>{{ current_user.username }}</p>
+            </div>
+        </div>
+        <div class="inside-div">
+            {% block content %} {% endblock content %}
+            <div id="notification" class="notification">
+                <h4>Your notifications</h4>
+                <div class="notify-container">
+                    {% for request in current_user.requests %}
+                        <div class="notify-content">
+                            <div class="notify">
+                                <a href="/profile/{{ request.requester.id }}" class="notify-img">
+                                    <img src="{{ url_for('static', filename='images/' + request.requester.profile_pic) }}" alt="pic">
+                                </a>
+                                <div class="notify-text">
+                                    <!-- <h3>{{ request.requester.username }}</h3> -->
+                                    {% if request.reason %}
+                                        <p> {{ request.reason }} to collaborate on {{ request.project.name }} </p>
+                                    {% else %}                                    
+                                        <p>{{ request.requester.username }} requests to join {{ request.project.name }}</p>
+                                    {% endif %}
+                                    <small>2 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="button">
+                                {% if not request.reason %}
+                                    <button class="btn btn-secondary" onclick="window.location.href='/accept/{{ request.id }}?accept=1'">Accept</button>
+                                    <button class="btn btn-secondary" onclick="window.location.href='/accept/{{ request.id }}?decline=1'">Decline</button>
+                                {% else %}
+                                    <form action="/request" method="POST">
+                                        <input type="hidden" value="delete" name="_method">
+                                        <input type="hidden" name="request_id" value="{{ request.id }}">
+                                        <input class="btn btn-secondary" type="submit" value="delete">
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% if not current_user.requests %}
+                        <div class="notify-content">
+                            <p style="padding: 20px 10px;">no notification</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 65px;
+    height: 100vh;
+    background-color: rgba(7,93,114,1);
+    transition: all 0.7s linear;
+}
+
+.sidebar:hover {
+    width: 180px;
+    transition: 0.7s;
+}
+
+.logo-container {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+}
+
+.logo {
+    width: 60px;
+    height: 100px;
+    background-image: url("../images/project_logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+}
+
+.sidebar:hover .logo {
+    width: 80px;
+    height: 100px;
+}
+
+.sidebar li {
+    padding: 1.3rem;
+    list-style: none;
+}
+
+.sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.menu a span {
+    overflow: hidden;
+}
+
+.menu li:hover a {
+    background-color: #e0e0e058;
+}
+
+.menu .logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu .setting {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+}
+
+.right-side {
+    width: 100%;
+}
+
+.right-side .right-header {
+    position: relative;
+    display: flex;
+    margin: 0 50px;
+    padding: 15px 45px;
+}
+
+.right-side .right-header button {
+    font-size: x-large;
+    border: none;
+}
+
+.right-side .right-header img {
+    margin: 0 1px 0 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.right-side .right-header div {
+    padding: 10px;
+    position: absolute;
+    right: 3px;
+}
+
+.right-side .right-header div p {
+    display: inline;
+}
+
+.inside-div {
+    display: flex;
+}
+
+
+.notification {
+    display: none;
+    position: absolute;
+    right: 5%;
+    background-color: rgb(241, 241, 241);
+    width: 30%;
+    padding: 60px 0px 30px 10px;
+    margin: 30px 10px;
+    border-radius: 15px;
+}
+
+.notify-container {
+    height: 100%;
+}
+
+
+.notify-content {
+    border-bottom: 2px solid rgb(231, 231, 231);
+}
+
+.notify {
+    display: flex;
+    align-items: center;
+}
+
+.notify-content .notify-img img {
+    width: 60px;
+    height: 70px;
+    margin: 0 10px;
+    padding: 10px 7px;
+    border-radius: 25px;
+}
+
+.notify-content .button {
+    display: flex;
+    margin: 0 71px;
+}
+
+.notify-content button, .notify-content input {
+    margin: 0 0 10px 7px;
+    padding: 1px 5px;
+}
+
+.notify-content .notify-text p {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+    font-weight: 700;
+}
+
+.notify-content .notify-text a {
+    color: rgb(239, 68, 68);
+    font-weight: lighter;
+    padding: 3px;
+}
+
+.notify-content .notify-text small {
+    font-weight: lighter;
+    font-size: smaller;
+}

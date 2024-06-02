@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Edit profile{% endblock title %}
+{% block content %}
+<div class="container-xl px-4 mt-4">
+    <h2 class="mb-3">Edit your account</h2>
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-account-profile rounded-circle mb-2" src="{{ url_for('static', filename='images/' + current_user.profile_pic ) }}" alt="">
+                    <!-- Profile picture help block-->
+                    <!-- <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div> -->
+                    <!-- Profile picture upload button-->
+                    <form method="post" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        {{ form.profile_pic(class="mb-2 ms-5 ps-2") }}
+                        {{ form.submit(class="btn btn-primary", value="Upload new image") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                            {{ form.username(class="form-control", for="inputUsername", placeholder="Enter your username", value=current_user.username) }}
+                        </div>
+                        <!-- Form Row-->
+                        <div class="mb-3">
+                            <!-- Form Group (first name)-->
+                            <label class="small mb-1" for="inputFullName">Full name</label>
+                            {{ form.full_name(class="form-control", for="inputFullName", placeholder="Enter your first name", value=current_user.full_name) }}                             
+                        </div>
+                        <!-- Form Row        -->
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            {{ form.email(class="form-control", for="inputEmailAddress", placeholder="Enter your email address", value= current_user.email) }}
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Skills</label>
+                                <select name="skills" >Skills
+                                    <option value="Software Engineering">Software Engineering</option>
+                                    <option value="Front-end">Front-End</option>
+                                    <option value="Back-End">Back-End</option>
+                                    <option value="Fullstack">FullStack</option>
+                                    <option value="Graphics Design">Graphics Design</option>
+                                </select>
+
+
+                                <!-- <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap"> -->
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputlinkedin">Linkedin</label>
+                                {{ form.linkedin(class="form-control", for="inputlinkedin", placeholder="", value=current_user.linkedin) }}    
+                            </div>
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                {{ form.phone_number(class="form-control", for="inputPhone", placeholder="Enter your phone number", value=current_user.phone_number) }} 
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputtelegram">Telegram</label>
+                                {{ form.telegram(class="form-control", for="inputtelegram", placeholder="", value=current_user.telegram) }}
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        {{ form.submit(class="btn btn-primary", value="Save changes") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

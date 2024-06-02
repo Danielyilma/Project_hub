@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Projects{% endblock title %}
+{% block csslink %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+{% endblock csslink %}
+{% block content %}
+<div class="project-list">
+    <h2>Projects</h2>
+    {% for project in projects %}
+        <a class="list-content" href="{{ url_for('get_project', id='1') }}">
+            <div class="pro-list-detail">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                <small>published {{ project.created_at }}</small>
+            </div>
+            <div class="pro-list-pic">
+                <img src="{{ url_for('static', filename='images/' + project.banner) }}" alt="Project Image"/>
+            </div>
+        </a>
+    {% endfor %}
+    <!-- <a class="list-content" href="{{ url_for('get_projects') }}">
+        <div class="pro-list-detail">
+            <h3>Project Hub</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore eum qui nihil corporis, fugiat magnam consequuntur enim architecto laboriosam iure possimus repudiandae at alias voluptates, est atque nam explicabo ratione.</p>
+            <small>published sep 13 2022</small>
+        </div>
+        <div class="pro-list-pic">
+            <img src="images.jpg" alt="Project Image"/>
+        </div>
+    </a> -->
+</div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+
+.project-list {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+
+.project-list h2 {
+    width: 86%;
+    padding-left: 30px;
+}
+
+.list-content {
+    width: 86%;
+    margin: 20px 0;
+    padding: 30px;
+    display: grid;
+    gap: 90px;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+    background: linear-gradient(90deg, rgba(7,93,114,1) 52%, rgba(0,0,0,1) 59%, rgba(7,93,114,1) 73%);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 1s;
+}
+
+.list-content:hover {
+    color: white;
+    transform: scale(1.03);
+    transition: 1s;
+}
+
+.pro-list-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.list-content .pro-list-pic img{
+    margin-left: 10px;
+    width: 270px;
+    height: 200px;
+}
