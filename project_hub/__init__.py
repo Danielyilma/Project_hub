@@ -20,6 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{db_user}:{db_pass}@{db_host}:
 app.app_context().push()
 app.config['UPLOAD_FOLDER'] = 'static/images/'
 
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -27,6 +28,9 @@ login_manager.init_app(app)
 db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
+
+from api.v1.views import app_views
+app.register_blueprint(app_views, url_prefix='/api/v1/')
 
 from project_hub.models.user import User
 

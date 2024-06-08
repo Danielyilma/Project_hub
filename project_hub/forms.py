@@ -12,6 +12,7 @@ class RegistrationForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     phone_number = StringField("Phone Number", validators=[DataRequired()])
+    bio = TextAreaField("")
     profile_pic = FileField("profile")
     telegram = StringField("Telegram")
     linkedin = StringField("Linkedin")

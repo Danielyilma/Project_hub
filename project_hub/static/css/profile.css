@@ -18,6 +18,10 @@ a {
     border-bottom: 1px solid grey;
 }
 
+.checker {
+    height: 100px;
+}
+
 .profile-pic img {
     margin: 30px 0;
     width: 130px;
@@ -33,7 +37,7 @@ a {
 .profile-pic .profile-content p {
     padding-top: 10px;
     line-height: 1.6;
-    width: 80%;
+    width: 70%;
 }
 
 .profile-pic .editor {
@@ -56,6 +60,7 @@ a {
     margin: 20px 0;
     display: flex;
     gap: 50px;
+    height: 200px;
 }
 
 .portfolio .portfolio-project{
@@ -74,7 +79,7 @@ a {
 }
 
 .skill-contact {
-    margin-bottom: 30px;
+    margin-bottom: 3px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid grey;

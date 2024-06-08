@@ -78,7 +78,7 @@
                                 <div class="notify-text">
                                     <!-- <h3>{{ request.requester.username }}</h3> -->
                                     {% if request.reason %}
-                                        <p> {{ request.reason }} to collaborate on {{ request.project.name }} </p>
+                                        <p> {{ request.reason }} {{ request.project.name }} </p>
                                     {% else %}                                    
                                         <p>{{ request.requester.username }} requests to join {{ request.project.name }}</p>
                                     {% endif %}

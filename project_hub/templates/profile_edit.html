@@ -44,6 +44,11 @@
                         <!-- Form Row        -->
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Biography</label>
+                            {{ form.bio(class="form-control", for="inputBio", placeholder="Describe your background and interests...", value=current_user.bio) }}
+                        </div>
+
+                        <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
                             {{ form.email(class="form-control", for="inputEmailAddress", placeholder="Enter your email address", value= current_user.email) }}
                         </div>
@@ -52,7 +57,7 @@
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputOrgName">Skills</label>
-                                <select name="skills" >Skills
+                                <select name="skills" class="form-select">Skills
                                     <option value="Software Engineering">Software Engineering</option>
                                     <option value="Front-end">Front-End</option>
                                     <option value="Back-End">Back-End</option>

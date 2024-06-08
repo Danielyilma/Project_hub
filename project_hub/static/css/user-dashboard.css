@@ -89,6 +89,7 @@ body {
 
 .right-side {
     width: 100%;
+    /* margin-left: 75px; */
 }
 
 .right-side .right-header {

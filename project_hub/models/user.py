@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(60))
     telegram = db.Column(db.String(60))
     linkedin = db.Column(db.String(60))
+    bio = db.Column(db.Text)
     #education
     #experiance
     skills = db.relationship('Skill', backref='user')
@@ -40,5 +41,5 @@ class User(db.Model, UserMixin):
 class Skill(db.Model):
     __tablename__ = 'skills'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), nullable=False, unique=True)
+    name = db.Column(db.String(60), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

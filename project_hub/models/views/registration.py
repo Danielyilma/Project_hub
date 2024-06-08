@@ -1,9 +1,10 @@
 from project_hub import app, db
 from project_hub.forms import RegistrationForm, LoginForm
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, abort
 from project_hub.models.user import User, Skill
 from flask_login import login_required, login_user, logout_user, current_user
-from project_hub.models.views.projects import file_uploader
+from project_hub.models.views.projects import file_uploader, delete_uploaded_file
+from project_hub.models.project import Project
 
 
 @app.route("/sign-up", methods=['GET', 'POST'])
@@ -28,18 +29,24 @@ def sign_up():
 
 
 
+@app.route("/edit/<int:id>", methods=['POST', 'GET'])
 @login_required
-@app.route("/edit", methods=['POST', 'GET'])
-def edit_profile():
+def edit_profile(id):
     form = RegistrationForm()
+
+    if id != current_user.id:
+        return abort(404)
     if request.method == "POST":
         if "profile_pic" in request.files:
             file = request.files["profile_pic"]
-            current_user.profile_pic = file_uploader(file)
+
+            if file:
+                delete_uploaded_file(current_user.profile_pic)
+                current_user.profile_pic = file_uploader(file)
         else:
             skills = request.form.get('skills')
 
-            if not Skill.query.filter_by(name=skills):
+            if not Skill.query.filter_by(name=skills, user_id=current_user.id).first():
                 skill = Skill()
                 skill.name = skills
                 skill.user_id = current_user.id
@@ -51,9 +58,12 @@ def edit_profile():
             current_user.telegram=form.telegram.data
             current_user.linkedin = form.linkedin.data
             current_user.username = form.username.data
+            current_user.bio = form.bio.data
         
         db.session.add(current_user)
         db.session.commit()
+    else:
+        form.bio.data = current_user.bio
 
     return render_template("profile_edit.html", form=form)
 
@@ -80,11 +90,15 @@ def logout():
 @login_required
 def get_profile():
     skills = Skill.query.filter(Skill.user_id==current_user.id).all()
-    return render_template("profile.html", skills=skills, current_user=current_user)
+
+    projects = Project.query.filter_by(owner_id=current_user.id).all()
+
+    return render_template("profile.html", skills=skills, current_user=current_user, projects=projects)
 
 @app.route("/profile/<int:id>", methods=["GET"])
 @login_required
 def get_user_profile(id):
     skills = Skill.query.filter(Skill.user_id==id).all()
     user = User.query.get_or_404(id)
-    return render_template("profile.html", skills=skills, current_user=user)
+
+    return render_template("profile.html", skills=skills, current_user=user, only_view=True)

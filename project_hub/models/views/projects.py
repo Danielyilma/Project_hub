@@ -17,6 +17,15 @@ def file_uploader(file):
     file.save(os.path.join(app.root_path, base_path, file_name))
     return file_name
 
+def delete_uploaded_file(filename):
+    root = app.root_path
+    path = root + url_for('static', filename='images/') + filename
+    try:
+        os.remove(path)
+    except Exception as e:
+        return None
+
+
 @app.route('/')
 def landing():
     return render_template('index.html')
@@ -73,6 +82,7 @@ def create_project():
         if file:
             project.banner = file_uploader(file)
         db.session.add(project)
+        db.session.commit()
 
         visuals = form.project_visual.data 
         visuals = [] if visuals is None else visuals
@@ -110,6 +120,7 @@ def edit_project(id):
         project.progress = "planning"
         file = request.files['banner']
         if file:
+            delete_uploaded_file(project.banner)
             project.banner = file_uploader(file)
         db.session.add(project)
 
@@ -130,8 +141,8 @@ def edit_project(id):
 
 
 
-@login_required
 @app.route('/request', methods=["POST"])
+@login_required
 def request_for_project():
     if request.form.get('_method', None):
         id = request.form.get('request_id')
@@ -149,8 +160,8 @@ def request_for_project():
     return redirect("/projects")
 
 
-@login_required
 @app.route('/accept/<int:id>', methods=["GET"])
+@login_required
 def accept(id):
     request1 = Request.query.get_or_404(id)
     project = Project.query.get_or_404(request1.project_id)

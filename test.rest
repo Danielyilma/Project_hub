@@ -1,0 +1,58 @@
+
+POST http://localhost:5000/api/v1/user/sign-up
+Content-Type: application/json
+
+{
+    "full_name": "daniel",
+    "email": "test@gmail.com",
+    "phone_number": "0911823657",
+    "password": "passcode",
+    "username": "dani12"
+}
+
+###
+
+POST http://localhost:5000/api/v1/user/login
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "passcode"
+}
+
+###
+
+POST http://localhost:5000/api/v1/user/logout
+
+
+###
+
+PuT http://localhost:5000/api/v1/user
+Content-Type: application/json
+
+{
+    "full_name": "daniels",
+    "phone_number": "+251911823657"
+}
+
+
+###
+
+GET http://localhost:5000/api/v1/user/10
+
+
+###
+POST http://localhost:5000/api/v1/projects
+Content-Type: multipart/form-data
+
+{
+    "name": "project_hub",
+    "description": "collaborative platfrom",
+    "project_link": "project_hub.danielyilma.tech"
+}
+
+
+
+
+
+

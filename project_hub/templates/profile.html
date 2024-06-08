@@ -9,17 +9,21 @@
         <div class="profile-content">
             <img src="{{ url_for('static', filename='images/' + current_user.profile_pic ) }}" alt="pics">
             <h3>{{ current_user.full_name }}</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga vero consectetur ad animi illum similique qui quibusdam hic voluptas fugiat quod, assumenda autem optio laboriosam veritatis dolorem quasi dolore earum.</p>
+            {% if current_user.bio %}
+                <p>{{ current_user.bio }}</p>
+            {% endif %}
         </div>
-        <a class="editor" href="/edit">
-            <i class="fa-regular fa-pen-to-square"></i>
-            <span>Edit</span>
-        </a>
+        {% if not only_view %}
+            <a class="editor" href="/edit/{{ current_user.id }}">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <span>Edit</span>
+            </a>
+        {% endif %}
     </div>
     <div class="portfolio">
         <h4>Portfolio</h4>
         <div class="portfolio-flex">
-            {% for project in current_user.projects %}
+            {% for project in projects %}
                 <a href="/project/{{ project.id }}" class="portfolio-project">
                     <img src="{{ url_for('static', filename='images/' + project.banner ) }}" alt="project">
                     <h6>{{ project.name }}</h6>
