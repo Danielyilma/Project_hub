@@ -23,14 +23,67 @@
         <p>
             Discover, Connect, and Collaborate on Exciting Projects. Join a vibrant community of creators, innovators, and collaborators who are passionate about bringing ideas to life.
         </p>
-        <a class="btn btn-secondary" href="sign_up.html">Explore Projects</a>
+        <a class="btn btn-secondary" href="{{ url_for('sign_up') }}">Explore Projects</a>
     </div>
     </header>
     <section class="main-content">
         
     </section>
-    <footer>
-
+    <main>
+        <dic class="container">
+            <div class="row benefits">
+                <div class="col-lg">
+                    <img src="../static/images/project-showcase.jpg" alt="picture">
+                    <h2>Project Discovery</h2>
+                    <p>Users can explore a wide range of projects and project ideas, allowing them to find initiatives that align with their interests and skills.</p>
+                </div>
+                <div class="col-lg">
+                    <img src="../static/images/collaborative.png" alt="picture">
+                    <h2>Collaboration Opportunities</h2>
+                    <p>The platform offers a space for users to join projects and collaborate with others, fostering teamwork and collective innovation.</p>
+                </div>
+                <div class="col-lg">
+                    <img src="../static/images/project-creation.jpg" alt="picture">
+                    <h2>Project Creation</h2>
+                    <p>Users have the ability to create their own projects, giving them a platform to share their ideas and attract collaborators.</p>
+                </div>
+            </div>
+        </dic>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About</h3>
+                <p>
+                    Discover, connect, and collaborate on exciting projects. Join a vibrant community of creators, innovators, and collaborators who are passionate about bringing ideas to life.
+                </p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Create Project</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@projecthub.com</p>
+                <p>Phone: +251922122567</p>
+                <div class="socials">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 ProjectHub | Daniel Yilma
+        </div>
+    
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
