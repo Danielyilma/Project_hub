@@ -4,6 +4,8 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_session import Session
+import redis
 
 
 app = Flask(__name__)
@@ -19,7 +21,13 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
 app.app_context().push()
 app.config['UPLOAD_FOLDER'] = 'static/images/'
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_KEY_PREFIX'] = 'hub:'
+app.config['SESSION_REDIS'] = redis.from_url('redis://localhost:6379')
 
+Session(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
